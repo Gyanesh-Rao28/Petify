@@ -1,0 +1,95 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id       String @id @default(uuid())
+  userId   String @unique
+  name     String
+  imageUrl String? @db.Text
+  location String
+
+  email       String @db.Text
+  phoneNumber String
+
+  donations Donation[]
+  adoptions Adoption[]
+  products Product[]
+
+  createdAt DateTime @default(now())
+}
+
+
+model Pet {
+  id String @id @default(uuid())
+
+  type String
+  breed String
+  age Int
+  imageUrl String @db.Text
+  description String
+
+  available Boolean @default(true)
+
+  donations Donation[]
+  adoptions Adoption[]
+
+  createdAt DateTime @default(now())
+
+}
+
+
+model Donation {
+  id String @id @default(uuid())
+
+  petId String
+  pet Pet @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  profileId String
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([profileId])
+  @@index([petId])
+}
+
+
+
+model Adoption {
+  id String @id @default(uuid())
+
+  petId String
+  pet Pet @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  profileId String
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([profileId])
+  @@index([petId])
+}
+
+
+model Product{
+  id String @id @default(uuid())
+
+  title String
+  description String
+  imageUrl String @db.Text
+  price Int
+
+  profileId String
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([profileId])
+}
