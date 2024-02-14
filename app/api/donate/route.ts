@@ -9,28 +9,22 @@ export async function POST(
 ) {
     try {
 
-
         const { type, breed, age, imageUrl, description } = await req.json();
-
-        const { searchParams } = new URL(req.url);
-
-        const profileId = searchParams.get("profileId");
 
         const profile = await currentProfile();
 
-        
 
-        if(!profileId){
+        if (!profile) {
             return new NextResponse("Unathourized", { status: 401 });
         }
 
 
-        if (!profileId || !type || !breed || !age || !imageUrl || !description) {
+        if (!type || !breed || !age || !imageUrl || !description) {
             return new NextResponse("fields missing", { status: 400 });
         }
 
         const result = await db.$transaction(async (prisma) => {
-            
+
             const pet = await prisma.pet.create({
                 data: {
                     type: type,
@@ -41,10 +35,10 @@ export async function POST(
                 },
             });
 
-            
+
             const donation = await prisma.donation.create({
                 data: {
-                    profileId: profileId,
+                    profileId: profile.id,
                     petId: pet.id,
                 },
             });
@@ -52,7 +46,7 @@ export async function POST(
             return { pet, donation };
         });
 
-        
+
         return NextResponse.json(result.pet);
 
     } catch (error) {
