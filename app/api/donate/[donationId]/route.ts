@@ -76,7 +76,6 @@ export async function PATCH(
             return new NextResponse("fields missing", { status: 400 });
         }
 
-        console.log("Working")
 
 
         const pet = await db.pet.update({

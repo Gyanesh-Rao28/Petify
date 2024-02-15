@@ -2,7 +2,7 @@ import { db } from "./db";
 
 
 export const currentProfile = async () => {
-    const userId = 'QYGg4NNzeip'
+    const userId = 'naoUB94nai0Obf9'
 
     if (!userId) {
         return null;

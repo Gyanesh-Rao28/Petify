@@ -47,7 +47,10 @@ export async function POST(
         });
 
 
-        return NextResponse.json(result.pet);
+        return NextResponse.json({
+            pet: result.pet,
+            donation: result.donation
+        });
 
     } catch (error) {
         console.log("DONATION: ", error);
