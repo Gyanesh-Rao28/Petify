@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { db } from "@/libs/db";
-import { currentProfile } from "@/libs/current-profile";
+
 
 
 export async function POST(
@@ -11,21 +11,13 @@ export async function POST(
 
         const { title, description, imageUrl, price } = await req.json();
 
-        const profile = await currentProfile();
-
-
-        if (!profile) {
-            return new NextResponse("Unathourized", { status: 401 });
-        }
-
 
         if (!title || !price || !imageUrl || !description) {
             return new NextResponse("fields missing", { status: 400 });
         }
 
         const product = await db.product.create({
-            data:{
-                profileId: profile.id,
+            data: {
                 title: title,
                 description: description,
                 imageUrl: imageUrl,
@@ -34,9 +26,7 @@ export async function POST(
         })
 
 
-        return NextResponse.json({
-            product
-        });
+        return NextResponse.json(product);
 
     } catch (error) {
         console.log("DONATION: ", error);
