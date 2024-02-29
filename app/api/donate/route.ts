@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { db } from "@/libs/db";
-import { currentProfile } from "@/libs/current-profile";
+import { db } from "@/lib/db";
+import { currentProfile } from "@/lib/current-profile";
 
 
 export async function POST(
