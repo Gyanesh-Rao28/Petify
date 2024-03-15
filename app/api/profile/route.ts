@@ -8,14 +8,14 @@ export async function POST(
 ) {
     try {
 
-        const { instaProfile,name, imageUrl, location, email, phoneNumber } = await req.json();
+        const { instaProfile,name, imageUrl, email, phoneNumber } = await req.json();
 
         const { searchParams } = new URL(req.url);
 
         const userId = searchParams.get("userId");
 
 
-        if (!instaProfile||!userId || !name || !location || !email || !phoneNumber) {
+        if (!instaProfile||!userId || !name || !email || !phoneNumber) {
             return new NextResponse("fields missing", { status: 400 });
         }
 
@@ -25,7 +25,6 @@ export async function POST(
                 instaProfile: instaProfile,
                 name: name,
                 imageUrl: imageUrl || null,
-                location: location,
                 email: email,
                 phoneNumber: phoneNumber
             }

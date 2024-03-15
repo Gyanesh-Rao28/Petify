@@ -9,7 +9,7 @@ export async function POST(
 ) {
     try {
 
-        const { name, type, breed, age, imageUrl, description } = await req.json();
+        const { name, type, breed, age, imageUrl, description, location } = await req.json();
 
         const profile = await currentProfile();
 
@@ -19,7 +19,7 @@ export async function POST(
         }
 
 
-        if (!name ||!type || !breed || !age || !imageUrl || !description) {
+        if (!name || !type || !breed || !age || !imageUrl || !description || !location) {
             return new NextResponse("fields missing", { status: 400 });
         }
 
@@ -33,6 +33,7 @@ export async function POST(
                     age: age,
                     imageUrl: imageUrl,
                     description: description,
+                    location: location
                 },
             });
 
