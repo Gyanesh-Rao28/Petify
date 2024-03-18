@@ -18,6 +18,9 @@ export async function POST(
             return new NextResponse("Unathourized", { status: 401 });
         }
 
+        // return NextResponse.json({
+        //     name, type, breed, age, imageUrl, description, location 
+        // })
 
         if (!name || !type || !breed || !age || !imageUrl || !description || !location) {
             return new NextResponse("fields missing", { status: 400 });
@@ -47,6 +50,11 @@ export async function POST(
 
             return { pet, donation };
         });
+
+        console.log({
+            pet: result.pet,
+            donation: result.donation
+        })
 
 
         return NextResponse.json({

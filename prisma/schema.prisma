@@ -39,7 +39,7 @@ model Pet {
   type  PetType
   breed String 
 
-  age         Int
+  age         String
   imageUrl    String @db.Text
   description String
   location String
