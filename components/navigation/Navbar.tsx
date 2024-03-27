@@ -16,9 +16,6 @@ import { currentProfile } from "@/lib/current-profile";
 
 import UserAvatar from "./UserProfile";
 
-
-
-
 const Navbar = async() => {
 
     const profile = await currentProfile()
@@ -32,7 +29,7 @@ const Navbar = async() => {
             className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
             aria-label="Global"
           >
-            <div className="flex lg:flex-1">
+            <div className="flex lg:flex-1 z-50">
               <a href="/" className="-m-1.5 p-1.5">
                 <span className="text-2xl font-bold">Petify</span>{" "}
                 {/*Text Change*/}

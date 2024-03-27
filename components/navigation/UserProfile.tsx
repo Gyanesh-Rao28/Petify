@@ -23,7 +23,7 @@ const UserAvatar = ({ src }: UserAvatarProps) => {
         </PopoverTrigger>
         <PopoverContent className="w-64" side="left" align="start">
           <a
-            href="/Profile"
+            href="/profile"
             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#002A48] hover:bg-amber-50"
           >
             Profile

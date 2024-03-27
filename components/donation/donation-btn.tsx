@@ -3,8 +3,8 @@
 
 import axios from "axios";
 import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from 'react-hook-form';
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -27,8 +27,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -69,15 +67,16 @@ const DonationBtn = () => {
     const router = useRouter();
 
     const form = useForm({
-        defaultValues: {
-            name: "",
-            type: "",
-            breed: "",
-            age: "",
-            imageUrl: "",
-            description: "",
-            location: "",
-        },
+      resolver: zodResolver(formSchema),
+      defaultValues: {
+        name: "",
+        type: "",
+        breed: "",
+        age: "",
+        imageUrl: "",
+        description: "",
+        location: "",
+      },
     });
 
     const isLoading = form.formState.isSubmitting;
@@ -136,6 +135,7 @@ const DonationBtn = () => {
                                   onChange={field.onChange}
                                 />
                               </FormControl>
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -158,6 +158,7 @@ const DonationBtn = () => {
                                 {...field}
                               />
                             </FormControl>
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -179,6 +180,7 @@ const DonationBtn = () => {
                                 {...field}
                               />
                             </FormControl>
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -200,6 +202,7 @@ const DonationBtn = () => {
                                 {...field}
                               />
                             </FormControl>
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -221,6 +224,7 @@ const DonationBtn = () => {
                                 {...field}
                               />
                             </FormControl>
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -242,6 +246,7 @@ const DonationBtn = () => {
                                 {...field}
                               />
                             </FormControl>
+                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -262,6 +267,7 @@ const DonationBtn = () => {
                                 {...field}
                               />
                             </FormControl>
+                            <FormMessage />
                           </FormItem>
                         )}
                       />

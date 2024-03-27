@@ -1,5 +1,4 @@
 import DonationBtn from '@/components/donation/donation-btn';
-import { Button } from '@/components/ui/button';
 import React from 'react'
 
 const Donation = () => {
