@@ -1,17 +1,17 @@
 import ItemLayout from "@/components/item-layout";
 import UserAvatar from "@/components/navigation/UserProfile";
-import ManageBtn from "@/components/profile/manage-btn";
 import { Button } from "@/components/ui/button";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { redirectToSignIn } from "@clerk/nextjs";
-import Image from "next/image";
+import Image from "next/image"; 
 import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 
 const ProfileIdPage = async () => {
+
   const profile = await currentProfile();
 
   if (!profile) {
@@ -46,8 +46,6 @@ const ProfileIdPage = async () => {
   });
 
 
-  // console.log(donate[0].pet)
-
 
   return (
     <>
@@ -66,6 +64,9 @@ const ProfileIdPage = async () => {
             <p className="ml-4 text-2xl font-semibold">{profile.name}</p>
           </div>
         </main>
+        <section>
+          To Be Done
+        </section>
       </div>
       <div className="bg-[#FCEED5]  overflow-y flex flex-col items-center">
         <h1 className="text-3xl lg:text-4xl mt-24 lg:mt-32 tracking-wide font-semibold text-[#002A48]">
@@ -80,13 +81,13 @@ const ProfileIdPage = async () => {
               {donate ? (
                 donate.map((item, index) => (
                   <ItemLayout
-                    key={donate[index].pet.id}
-                    id={donate[index].pet.id}
-                    name={donate[index].pet.name}
-                    type={donate[index].pet.type}
-                    breed={donate[index].pet.breed}
-                    imgUrl={donate[index].pet.imageUrl}
-                    desc={donate[index].pet.description}
+                    key={donate[index].petId}
+                    id={donate[index].pet?.id}
+                    name={donate[index].pet?.name}
+                    type={donate[index].pet?.type}
+                    breed={donate[index].pet?.breed}
+                    imgUrl={donate[index].pet?.imageUrl}
+                    desc={donate[index].pet?.description}
                   />
                 ))
               ) : (
