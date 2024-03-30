@@ -27,6 +27,8 @@ export async function POST(
             return new NextResponse("Server ID missing", { status: 400 });
         }
 
+        console.log(petId)
+
 
         const result = await db.$transaction(async (prisma) => {
 

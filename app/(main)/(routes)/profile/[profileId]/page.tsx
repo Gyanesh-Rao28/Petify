@@ -64,11 +64,9 @@ const ProfileIdPage = async () => {
             <p className="ml-4 text-2xl font-semibold">{profile.name}</p>
           </div>
         </main>
-        <section>
-          To Be Done
-        </section>
+        <section>To Be Done</section>
       </div>
-      <div className="bg-[#FCEED5]  overflow-y flex flex-col items-center">
+      <div className="bg-[#FCEED5] overflow-y flex flex-col items-center">
         <h1 className="text-3xl lg:text-4xl mt-24 lg:mt-32 tracking-wide font-semibold text-[#002A48]">
           Manage History
         </h1>
@@ -78,16 +76,18 @@ const ProfileIdPage = async () => {
             <h2 className="text-3xl font-semibold my-24">Donations</h2>
 
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-              {donate ? (
+              {donate.length !== 0 ? (
                 donate.map((item, index) => (
                   <ItemLayout
-                    key={donate[index].petId}
+                    key={item.id}
+                    serviceTyp="donation"
                     id={donate[index].pet?.id}
                     name={donate[index].pet?.name}
                     type={donate[index].pet?.type}
                     breed={donate[index].pet?.breed}
                     imgUrl={donate[index].pet?.imageUrl}
                     desc={donate[index].pet?.description}
+                    avail={donate[index].pet?.available}
                   />
                 ))
               ) : (
@@ -116,7 +116,8 @@ const ProfileIdPage = async () => {
               {adopt.length !== 0 ? (
                 adopt.map((item, index) => (
                   <ItemLayout
-                    key={adopt[index].petId}
+                    key={item.id}
+                    serviceTyp="adoption"
                     id={adopt[index].pet.id}
                     name={adopt[index].pet.name}
                     type={adopt[index].pet.type}
@@ -150,7 +151,8 @@ const ProfileIdPage = async () => {
               {order.length !== 0 ? (
                 order.map((item, index) => (
                   <ItemLayout
-                    key={order[index].productId}
+                    serviceTyp="shop"
+                    key={item.id}
                     id={order[index].productId}
                     name={order[index].product.title}
                     imgUrl={order[index].product.imageUrl}
