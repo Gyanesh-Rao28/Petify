@@ -42,7 +42,9 @@ const Adoption = async () => {
         </div>
       </div>
       <hr className="my-3 border-black sm:mx-auto lg:my-8 w-4/5" />
-          <h1 className="w-full text-center mt-4 text-[48px] lg:text-[64px] font-semibold">Adopt</h1>
+      <h1 className="w-full text-center mt-4 text-[48px] lg:text-[64px] font-semibold">
+        Adopt
+      </h1>
       <div className="bg-white h-screen flex flex-col lg:flex-row">
         <div className="bg-[#ACE2E1] w-full lg:w-1/4 h-full">
           {" "}
@@ -54,7 +56,7 @@ const Adoption = async () => {
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 {donated.map((item, index) => (
                   <ItemLayout
-                    key={item.petId}
+                    key={item.petId || index}
                     serviceTyp="adoption"
                     id={item.id}
                     name={donated[index].pet?.name}
@@ -64,7 +66,6 @@ const Adoption = async () => {
                     desc={donated[index].pet?.description}
                   />
                 ))}
-               
               </div>
             </div>
           </div>

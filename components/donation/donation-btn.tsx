@@ -26,7 +26,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
 
 import { useEffect, useState } from "react";
@@ -84,30 +83,30 @@ const DonationBtn = () => {
 
   const isLoading = form.formState.isSubmitting;
 
-const onSubmit = async (values: z.infer<typeof formSchema>) => {
-  try {
-    const res = await axios.post("/api/donate", values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      await axios.post("/api/donate", values);
 
-    form.reset();
-    router.refresh();
-    toast({
-      title: "Congratulations!",
-      description: (
-        <>
-          Wishing you and your new companion endless cuddles, wagging tails, and
-          unforgettable memories together! Congratulations on your adoption!{" "}
-          <PawPrint className="h-8 w-8" />
-        </>
-      ),
-    });
+      form.reset();
+      router.refresh();
+      toast({
+        title: "Congratulations!",
+        description: (
+          <>
+            Wishing you and your new companion endless cuddles, wagging tails, and
+            unforgettable memories together! Congratulations on your adoption!{" "}
+            <PawPrint className="h-8 w-8" />
+          </>
+        ),
+      });
 
-    setTimeout(() => {
-      window.location.reload(); 
-    }, 1500);
-  } catch (error) {
-    console.log(error);
-  }
-};
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (!isMounted) {
     return null;

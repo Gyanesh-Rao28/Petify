@@ -20,6 +20,7 @@ model Profile {
   donations Donation[]
   adoptions Adoption[]
   order     Order[]
+  
 
   createdAt DateTime @default(now())
 }

@@ -4,7 +4,8 @@ const nextConfig = {
         domains: [
             "uploadthing.com",
             "utfs.io",
-            "tailwindui.com"
+            "tailwindui.com",
+            "cdn.discordapp.com"
         ]
     }
 };

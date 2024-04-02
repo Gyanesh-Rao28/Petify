@@ -66,6 +66,7 @@ const ProfileIdPage = async () => {
         </main>
         <section>To Be Done</section>
       </div>
+      
       <div className="bg-[#FCEED5] overflow-y flex flex-col items-center">
         <h1 className="text-3xl lg:text-4xl mt-24 lg:mt-32 tracking-wide font-semibold text-[#002A48]">
           Manage History
