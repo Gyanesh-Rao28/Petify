@@ -7,12 +7,15 @@ import { Badge } from "@/components/ui/badge";
 import AddToCart from "./product/add-to-cart";
 import { currentProfile } from "@/lib/current-profile";
 import ItemQuantity from "./product/item-quantity";
+import RemoveFromCart from "./product/remove-from-cart";
+import { db } from "@/lib/db";
 
 
 
 interface ItemLayoutProps {
   id: string;
   serviceTyp: string;
+  cartId?: string
   name?: string;
   breed?: string;
   type?: PetType;
@@ -32,8 +35,18 @@ const ItemLayout = async ({
   desc,
   price,
   avail,
+  cartId,
 }: ItemLayoutProps) => {
-  const profile = await currentProfile()
+  const profile = await currentProfile();
+
+  const cart = await db.cart.findFirst({
+    where: {
+      id: cartId,
+      profileId: profile?.id,
+      productId: id
+    },
+  });
+
 
 
   return (
@@ -68,21 +81,33 @@ const ItemLayout = async ({
           </p>
         </div>
 
-        <div className="flex justify-center">
-          <ItemQuantity productId={id} servivceTyp="shop" />
-        </div>
+        {serviceTyp === "cart" ? (
+          <div className="flex justify-center">
+            <div className="flex justify-center">
+              <ItemQuantity
+                productId={id}
+                cartId={cartId || ""}
+                currentQty={cart?.qty || 1}
+              />
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
 
         {serviceTyp === "shop" ? (
           <div className="flex justify-center">
             <AddToCart
-              profileId={profile?.id||""}
+              profileId={profile?.id || ""}
               productId={id}
               quantity={1}
-              price={price|| ""}
+              price={price || ""}
             />
           </div>
         ) : (
-          <></>
+          <div className="flex justify-center">
+            <RemoveFromCart cartId={cartId || ""} />
+          </div>
         )}
       </div>
     </>

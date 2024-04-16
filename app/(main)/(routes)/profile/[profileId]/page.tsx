@@ -1,22 +1,24 @@
-import ItemLayout from "@/components/item-layout";
-import UserAvatar from "@/components/navigation/UserProfile";
-import { Button } from "@/components/ui/button";
-import { currentProfile } from "@/lib/current-profile";
-import { db } from "@/lib/db";
-import { redirectToSignIn } from "@clerk/nextjs";
-import React from "react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ExternalLink } from "lucide-react";
+  import ItemLayout from "@/components/item-layout";
+  import UserAvatar from "@/components/navigation/UserProfile";
+  import { Button } from "@/components/ui/button";
+  import { currentProfile } from "@/lib/current-profile";
+  import { db } from "@/lib/db";
+  import React from "react";
+  import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+  import { ExternalLink } from "lucide-react";
+import { SignIn } from "@clerk/nextjs";
 
 
 
-const ProfileIdPage = async () => {
+  const ProfileIdPage = async () => {
 
-  const profile = await currentProfile();
+    const profile = await currentProfile();
 
-  if (!profile) {
-    return redirectToSignIn();
-  }
+  
+
+    if (!profile) {
+      return <SignIn />;
+    }
 
   const donate = await db.donation.findMany({
     where: {

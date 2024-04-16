@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Button } from "../ui/button";
-import { addProduct } from "@/lib/addCart";
 import axios from "axios";
 
 interface AddToCartProps {
@@ -17,10 +16,12 @@ const AddToCart = ({
   quantity,
   price,
 }: AddToCartProps) => {
+
+
+
   const onAddCart = async () => {
     try {
       const cart = await axios.post('/api/cart',{profileId,productId,quantity,price})
-      // console.log("Cart: ", cart.data)
     } catch (error) {
       console.error("Error adding product to cart:", error);
     }

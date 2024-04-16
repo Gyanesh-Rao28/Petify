@@ -56,10 +56,10 @@ const Navbar = async() => {
                 <Button variant="link"> Food & Accsessiors</Button>
               </a>
               <a
-                href="/about"
+                href="/cart"
                 className="text-l font-semibold leading-6 text-[#002A48]"
               >
-                <Button variant="link">About</Button>
+                <Button variant="link">Cart</Button>
               </a>
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -107,10 +107,10 @@ const Navbar = async() => {
                           Food & Accsessiors
                         </a>
                         <a
-                          href="/about"
+                          href="/cart"
                           className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#002A48] hover:bg-amber-50"
                         >
-                          About
+                          Cart
                         </a>
                       </div>
                       <div className="py-6">
