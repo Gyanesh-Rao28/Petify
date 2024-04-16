@@ -43,17 +43,21 @@ const AdoptBtn = ({ petId }: AdoptBtnProps) => {
         {!isLoading ? (
           <button
             onClick={onAdopt}
-            className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#002A48] px-8 py-3 text-base font-medium text-[#FCEED5] hover:bg-[#002A48] focus:outline-none focus:ring-2 focus:ring-[#002A48] focus:ring-offset-2"
+            className="my-2 w-4/5 bg-[#002A48] text-[#F7DBA7] border-2 hover:text-[#F7DBA7] hover:bg-transparent hover:border-2 hover:border-[#F7DBA7] rounded-lg px-3 py-2 font-medium"
           >
             Adopt
           </button>
         ) : (
-          <div className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#002A48] px-8 py-3 text-base font-medium text-[#FCEED5] hover:bg-[#002A48] focus:outline-none focus:ring-2 focus:ring-[#002A48] focus:ring-offset-2">
+          <div className="my-2 w-4/5 bg-[#002A48] text-[#F7DBA7] border-2 hover:text-[#002A48] hover:bg-transparent hover:border-2 hover:border-[#002A48] rounded-lg px-3 py-2 font-medium ">
             <Loader className="h-2 w-2 " />
           </div>
         )}
       </>
     );
 };
+
+{/* <div className="bg-[#002A48] text-[#F7DBA7] border-2 hover:text-[#002A48] hover:bg-transparent hover:border-2 hover:border-[#002A48] rounded-lg px-3 py-2 font-medium ">
+  <DonationBtn />
+</div>; */}
 
 export default AdoptBtn

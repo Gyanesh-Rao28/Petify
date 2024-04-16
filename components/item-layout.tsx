@@ -9,6 +9,7 @@ import { currentProfile } from "@/lib/current-profile";
 import ItemQuantity from "./product/item-quantity";
 import RemoveFromCart from "./product/remove-from-cart";
 import { db } from "@/lib/db";
+import AdoptBtn from "./adoption/adopt-btn";
 
 
 
@@ -95,7 +96,11 @@ const ItemLayout = async ({
           <></>
         )}
 
-        {serviceTyp === "shop" ? (
+        {serviceTyp === "adoption" ? (
+          <div className="flex justify-center">
+            <AdoptBtn petId={id} />
+          </div>
+        ) : serviceTyp === "shop" ? (
           <div className="flex justify-center">
             <AddToCart
               profileId={profile?.id || ""}

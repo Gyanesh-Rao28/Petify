@@ -9,20 +9,22 @@ const Adoption = async () => {
 
   const profile = await currentProfile()
 
-  const donated = await db.donation.findMany({
+  const donatedPets = await db.donation.findMany({
     where: {
-      NOT: {
-        profileId: profile?.id,
+      pet: {
+        available: true,
       },
-      pet:{
-        available:true
-      }
+      NOT: {
+        profile: {
+          id: profile?.id, 
+        },
+      },
     },
     include: {
-      pet: true
-    }
+      pet: true,
+    },
   });
-  // console.log("donatedd: ", donatedd);
+
 
 
   return (
@@ -54,17 +56,17 @@ const Adoption = async () => {
           <div className="flex max-w-7xl p-6 lg:px-8 w-full">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                {donated.map((item, index) => (
+                {donatedPets.map((item, index) => (
                   <ItemLayout
                     key={item.petId || index}
                     serviceTyp="adoption"
                     id={item.id}
-                    name={donated[index].pet?.name}
-                    type={donated[index].pet?.type}
-                    breed={donated[index].pet?.breed}
-                    imgUrl={donated[index].pet?.imageUrl}
-                    desc={donated[index].pet?.description}
-                    avail={donated[index].pet?.available}
+                    name={donatedPets[index].pet?.name}
+                    type={donatedPets[index].pet?.type}
+                    breed={donatedPets[index].pet?.breed}
+                    imgUrl={donatedPets[index].pet?.imageUrl}
+                    desc={donatedPets[index].pet?.description}
+                    avail={donatedPets[index].pet?.available}
                   />
                 ))}
               </div>
