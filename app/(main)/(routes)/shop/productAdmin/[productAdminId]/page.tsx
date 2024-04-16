@@ -48,7 +48,9 @@ const formSchema = z.object({
   imageUrl: z.string().min(1, {
     message: "Product image is required.",
   }),
-  price: z.number().min(1)
+  price: z.string().min(1, {
+    message: "Product image is required.",
+  }),
 });
 
 const ProductAdminIdPage = ({ params }: ProductAdminIdPageProps) => {
@@ -74,7 +76,7 @@ const ProductAdminIdPage = ({ params }: ProductAdminIdPageProps) => {
     defaultValues: {
       title: "",
       description: "",
-      price: 200,
+      price: '',
       imageUrl: "",
     },
   });
@@ -195,7 +197,6 @@ const ProductAdminIdPage = ({ params }: ProductAdminIdPageProps) => {
                       </FormLabel>
                       <FormControl>
                         <Input
-                        type="number"
                           disabled={isLoading}
                           className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                           placeholder="Enter pet name"

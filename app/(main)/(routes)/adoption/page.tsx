@@ -64,6 +64,7 @@ const Adoption = async () => {
                     breed={donated[index].pet?.breed}
                     imgUrl={donated[index].pet?.imageUrl}
                     desc={donated[index].pet?.description}
+                    avail={donated[index].pet?.available}
                   />
                 ))}
               </div>

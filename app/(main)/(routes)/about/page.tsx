@@ -1,6 +1,8 @@
+
 import React from 'react'
 
 const About = () => {
+
   return (
     <>
       <div className="bg-[#FCEED5] h-screen"></div>

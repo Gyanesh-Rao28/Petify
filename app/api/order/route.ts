@@ -18,6 +18,7 @@ export async function POST(
             return new NextResponse("Unathourized", { status: 401 });
         }
 
+        console.log(productId)
 
         if (!productId) {
             return new NextResponse("Product ID missing", { status: 400 });
@@ -40,7 +41,7 @@ export async function POST(
             },
         });
 
-
+        console.log(order)
         return NextResponse.json(order);
 
     } catch (error) {

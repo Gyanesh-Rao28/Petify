@@ -1,9 +1,14 @@
+
 import { PetType } from "@prisma/client";
 import { CheckCheck, Loader } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import AddToCart from "./product/add-to-cart";
+import { currentProfile } from "@/lib/current-profile";
+import ItemQuantity from "./product/item-quantity";
+
+
 
 interface ItemLayoutProps {
   id: string;
@@ -13,11 +18,11 @@ interface ItemLayoutProps {
   type?: PetType;
   imgUrl?: string;
   desc?: string;
-  price?: number;
+  price?: string;
   avail?: boolean;
 }
 
-const ItemLayout = ({
+const ItemLayout = async ({
   id,
   name,
   breed,
@@ -28,10 +33,13 @@ const ItemLayout = ({
   price,
   avail,
 }: ItemLayoutProps) => {
+  const profile = await currentProfile()
+
+
   return (
     <>
       <div className="group block max-w-sm text-white bg-[#002A48] border border-[#002A48] rounded-lg shadow relative">
-        {avail ? (
+        {!avail && serviceTyp === "adoption" ? (
           <Badge className="absolute -right-5 -top-2 px-4 z-10 bg-[#002A48] hover:bg-[#002A48]">
             Adopted <CheckCheck className="ml-2" />
           </Badge>
@@ -59,13 +67,23 @@ const ItemLayout = ({
             {type || price}{" "}
           </p>
         </div>
-          {serviceTyp === "shop" ? (
-            <div className="flex justify-center">
-              <AddToCart productId={id}/>
-            </div>
-          ) : (
-            ""
-          )}
+
+        <div className="flex justify-center">
+          <ItemQuantity productId={id} servivceTyp="shop" />
+        </div>
+
+        {serviceTyp === "shop" ? (
+          <div className="flex justify-center">
+            <AddToCart
+              profileId={profile?.id||""}
+              productId={id}
+              quantity={1}
+              price={price|| ""}
+            />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
