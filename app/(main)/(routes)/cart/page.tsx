@@ -1,10 +1,18 @@
+import CheckOut from "@/components/cart/check-out";
 import ItemLayout from "@/components/item-layout";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
+import { redirectToSignIn } from "@clerk/nextjs";
 import React from "react";
 
 const Cart = async () => {
   const profile = await currentProfile();
+
+  if(!profile){
+    return redirectToSignIn
+  }
+
+
   const cart = await db.cart.findMany({
     where: {
       profileId: profile?.id,
@@ -53,6 +61,7 @@ const Cart = async () => {
           </div>
         </div>
       </div>
+      <CheckOut profileId={profile?.id}/>
     </>
   );
 };

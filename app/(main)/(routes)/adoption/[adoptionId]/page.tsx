@@ -3,12 +3,12 @@ import { db } from "@/lib/db";
 import Image from "next/image";
 
 interface AdoptionIdPageProps {
-    params: {
-        adoptionId: string;
-    };
+  params: {
+    adoptionId: string;
+  };
 }
 
-const AdoptionIdPage = async({ params }: AdoptionIdPageProps) => {
+const AdoptionIdPage = async ({ params }: AdoptionIdPageProps) => {
   const donate = await db.donation.findFirst({
     where: {
       id: params.adoptionId,
