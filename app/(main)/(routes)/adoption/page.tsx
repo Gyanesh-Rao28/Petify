@@ -3,6 +3,9 @@ import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import AdoptHero from "@/components/adoption/adopt-hero";
+import PetFilter from "@/components/adoption/pet-filter";
+
+
 
 
 const Adoption = async () => {
@@ -25,21 +28,21 @@ const Adoption = async () => {
     },
   });
 
+  
+
 
 
   return (
     <>
-      
-      <AdoptHero/>
+      <AdoptHero />
 
       <div className="mt-12">
-        <h1 className="w-full text-center mt-4 text-[48px] lg:text-[64px] font-semibold">
+        <h1 className="w-full text-center my-4 text-[48px] lg:text-[64px] font-semibold">
           Adopt
         </h1>
         <div className="bg-white h-screen flex flex-col lg:flex-row">
-          <div className="bg-[#ACE2E1] w-full lg:w-1/4 h-full">
-            {" "}
-            <h1 className="w-full text-center">Filter</h1>{" "}
+          <div className="bg-[#FCEED5] w-full lg:w-1/4 lg:h-full">
+            <PetFilter />
           </div>
           <ScrollArea className="w-full lg:w-3/4 flex items-center justify-center">
             <div className="flex max-w-7xl p-6 lg:px-8 w-full">

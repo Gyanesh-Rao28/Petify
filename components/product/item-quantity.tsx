@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUp } from "lucide-react";
 
 import axios from "axios";
-import { db } from "@/lib/db";
+import { useRouter } from "next/navigation";
+
 
 interface ItemQuantityprops {
   productId: string;
@@ -13,6 +14,8 @@ interface ItemQuantityprops {
 }
 
 const ItemQuantity = ({ productId, cartId, currentQty }: ItemQuantityprops) => {
+
+  const router = useRouter()
 
 
   const [quantity, setQuantity] = useState<number>(currentQty);
@@ -24,6 +27,7 @@ const ItemQuantity = ({ productId, cartId, currentQty }: ItemQuantityprops) => {
           `/api/cart/${cartId}?productId=${productId}`,
           { quantity: quantity }
         );
+
       } catch (error) {
         console.log("[CART_UPDATION]:", error);
       }

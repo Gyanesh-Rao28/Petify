@@ -15,6 +15,7 @@ import { currentProfile } from "@/lib/current-profile";
 
 
 import UserAvatar from "./UserProfile";
+import Image from "next/image";
 
 const Navbar = async() => {
 
@@ -31,8 +32,13 @@ const Navbar = async() => {
           >
             <div className="flex lg:flex-1 z-50">
               <a href="/" className="-m-1.5 p-1.5">
-                <span className="text-2xl font-bold">Petify</span>{" "}
-                {/*Text Change*/}
+                <Image
+                  src="https://cdn.discordapp.com/attachments/1224025782754480128/1234456831556980797/Petify.png?ex=6630cd03&is=662f7b83&hm=e969c78e3314047e56028311fdc936cf890151b6a34fc5696a3ad871ad5c9bad&" // The path to your image file
+                  alt="Petify" // Alternative text for the image
+                  width={90} // Desired width (adjust as needed)
+                  height={50} // Desired height (adjust as needed)
+                  layout="fixed" // This can be responsive as well
+                />
               </a>
             </div>
 

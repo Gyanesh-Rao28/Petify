@@ -17,7 +17,7 @@ const ItemTable = ({ productId, name, qty, price }: ItemTableProps) => {
         {name}
       </th>
       <td className="px-6 py-4">{qty}</td>
-      <td className="px-6 py-4 bg-gray-50">{price}</td>
+      <td className="px-6 py-4 bg-gray-50">₹{price}</td>
     </tr>
   );
 };

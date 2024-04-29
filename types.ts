@@ -8,3 +8,7 @@ export type CartItem = {
     desc: string;
     price: string;
 };
+
+export type CheckOutCart={
+    
+}

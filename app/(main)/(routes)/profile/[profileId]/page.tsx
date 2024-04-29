@@ -38,29 +38,25 @@ import { SignIn } from "@clerk/nextjs";
     }
   });
 
-  const order = await db.order.findMany({
+  const order = await db.cart.findMany({
     where: {
       profileId: profile.id,
+      checkedOut:true
     },
-    include: {
-      product: true
-    }
+    
   });
 
-  const uniqueOrdersMap = new Map();
-
-  order.forEach((item) => {
-
-    const key = item.profileId + "-" + item.productId;
-
-    if (!uniqueOrdersMap.has(key)) {
-      uniqueOrdersMap.set(key, item);
-    }
+  const productIds = order.map((item) => {
+    return item.productId;
   });
 
-  const uniqueOrders = Array.from(uniqueOrdersMap.values());
-
-
+  const products = await db.product.findMany({
+    where: {
+      id: {
+        in: productIds,
+      },
+    },
+  });
 
 
   return (
@@ -165,16 +161,16 @@ import { SignIn } from "@clerk/nextjs";
 
             <h2 className="text-3xl font-semibold my-24">Products</h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-              {uniqueOrders.length !== 0 ? (
-                uniqueOrders.map((item, index) => (
+              {products.length !== 0 ? (
+                products.map((item, index) => (
                   <ItemLayout
                     serviceTyp="shop"
                     key={item.id}
-                    id={uniqueOrders[index].productId}
-                    name={uniqueOrders[index].product.title}
-                    imgUrl={uniqueOrders[index].product.imageUrl}
-                    desc={uniqueOrders[index].product.description}
-                    price={uniqueOrders[index].product.price}
+                    id={item.id}
+                    name={item.title}
+                    imgUrl={item.imageUrl}
+                    desc={item.description}
+                    price={item.price}
                   />
                 ))
               ) : (

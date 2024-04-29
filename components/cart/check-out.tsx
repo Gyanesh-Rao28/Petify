@@ -3,6 +3,8 @@
 import { db } from "@/lib/db";
 import React from "react";
 import ItemTable from "./item-table";
+import { Button } from "../ui/button";
+import CheckOutBtn from "./check-out-btn";
 
 interface CheckOutProps {
   profileId: string;
@@ -12,20 +14,30 @@ const CheckOut = async ({ profileId }: CheckOutProps) => {
   const cartItems = await db.cart.findMany({
     where: {
       profileId: profileId,
+      // checkedOut: false
     },
     include: {
       product: true,
     },
   });
 
-  const calculateTotalPrice = (): number => {
+  // console.log(cartItems)
+
+  const calculateTotalPrice = () => {
+
     return cartItems.reduce((total, order) => {
       const orderTotal = parseInt(order.price) * order.qty;
       return total + orderTotal;
     }, 0);
+
+  };
+
+  const calculateTotalQuantity = () => {
+    return cartItems.reduce((total, order) => total + order.qty, 0);
   };
 
   const totalPrice = calculateTotalPrice();
+  const totalQuantity = calculateTotalQuantity();
 
   return (
     <>
@@ -66,11 +78,14 @@ const CheckOut = async ({ profileId }: CheckOutProps) => {
                     <th scope="row" className="px-6 py-3 text-base">
                       Total
                     </th>
-                    <td className="px-6 py-3">{cartItems.length}</td>
+                    <td className="px-6 py-3">{totalQuantity}</td>
                     <td className="px-6 py-3">₹{totalPrice}</td>
                   </tr>
                 </tfoot>
               </table>
+              <div className="w-4/5 h-10 mx-auto mb-2 flex justify-center items-end">
+                <CheckOutBtn profileId={profileId} totalPrice={totalPrice} totalQuantity={totalQuantity}/>
+              </div>
             </div>
           </div>
         </div>
