@@ -25,13 +25,13 @@ const Navbar = async() => {
 
     return (
       <>
-        <header className=" text-[#002A48] bg-[#FCEED5] relative w-full z-10">
+        <header className="h-24 text-[#002A48] bg-[#FCEED5] relative w-full z-10">
           <nav
             className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8"
             aria-label="Global"
           >
             <div className="flex lg:flex-1 z-50">
-              <a href="/" className="-m-1.5 p-1.5">
+              <a href="/" className="">
                 <Image
                   src="https://cdn.discordapp.com/attachments/1224025782754480128/1234456831556980797/Petify.png?ex=6630cd03&is=662f7b83&hm=e969c78e3314047e56028311fdc936cf890151b6a34fc5696a3ad871ad5c9bad&" // The path to your image file
                   alt="Petify" // Alternative text for the image
