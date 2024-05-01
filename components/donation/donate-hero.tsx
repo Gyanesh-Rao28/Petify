@@ -4,6 +4,7 @@ import yeong from "@/public/yeong.jpg";
 import hannah from "@/public/hannah.jpg";
 import tron from "@/public/tron.jpg";
 import roberto from "@/public/roberto.jpg";
+import gif from "@/public/Animation.gif";
 import { Button } from '../ui/button';
 import DonationBtn from './donation-btn';
 
@@ -20,6 +21,15 @@ const DonateHero = () => {
             <h1 className="text-4xl font-bold w-1/2 mb-10">
               We foster a supportive community of pet lovers.
             </h1>
+            {/* <div>
+              <Image
+                src={gif}
+                alt="Loading Animation"
+                width={150} // Set the width of the GIF
+                height={150} // Set the height of the GIF
+                unoptimized={true} // Use this prop if you do not want Next.js to optimize the GIF
+              />
+            </div> */}
             <p className="text-xl">
               Help pets find their perfect match by donating through Petify's
               adoption page. Your contribution can transform lives and bring joy

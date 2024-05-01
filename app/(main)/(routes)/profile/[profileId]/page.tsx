@@ -41,10 +41,11 @@ import { SignIn } from "@clerk/nextjs";
   const order = await db.cart.findMany({
     where: {
       profileId: profile.id,
-      checkedOut:true
     },
     
   });
+
+  console.log(order)
 
   const productIds = order.map((item) => {
     return item.productId;
