@@ -22,10 +22,11 @@ const AdoptHero = () => {
               WELCOME to the family.
             </h1>
             <p className="mt-2 text-sm sm:text-base md:text-lg text-white font-light max-w-md mx-auto">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque
-              elit, tristique placerat.
+              where every furry friend is eagerly awaiting their forever home.
+              Find your perfect match and embark on a journey of unconditional
+              love and companionship today
             </p>
-            <div className="mt-4">
+            <div className="mt-24">
               <a
                 href="/shop"
                 className="inline-block bg-[#F7DBA7] text-[#002A48] font-medium text-sm sm:text-base md:text-lg px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"

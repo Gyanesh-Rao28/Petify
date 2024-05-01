@@ -5,7 +5,7 @@ import jamiestreet from "@/public/jamie-street.jpg"; // make sure to add your im
 
 const HeroSection = () => {
     return (
-      <div className="relative h-screen">
+      <div className="relative h-screen z-20">
         {/* Background image */}
         <Image
           src={jamiestreet}
@@ -23,8 +23,8 @@ const HeroSection = () => {
             WELCOME to the family.
           </h1>
           <p className="mt-4 text-sm sm:text-base md:text-lg font-light">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque
-            elit, tristique placerat.
+            Embrace the love and make every adoption and purchase pave the way
+            to happier tails and purrfect companionship!
           </p>
           <div className="mt-6">
             <a

@@ -11,7 +11,8 @@ const HomeInfo = () => {
         {/* ------- */}
         <div className="flex-1 space-y-3">
           <h1 className="text-3xl lg:text-4xl font-semibold text-[#002A48]">
-            Petify software solutions plans global expansion
+            At Petify, we're passionate about connecting animals with loving
+            homes.
           </h1>
           <HomeTypo />
         </div>

@@ -6,47 +6,48 @@ const HomeTypo = () => {
   return (
     <>
       <div className="text-[#002A48] p-4 rounded-lg mx-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
-        <h2 className="text-lg font-semibold mb-4">
-          Benefits From Our Online Learning
-        </h2>
         <ul>
           <li className="flex items-center mb-2">
             <CheckCheck className="h-12 w-12 mr-2 text-red-400" />
             <div>
-              <strong>Online Degrees</strong>
+              <strong>Adoption</strong>
               <p className="text-sm">
-                Earn accredited degrees from the comfort of your home,
-                respecting your own time and pace.
+                We facilitate the adoption process, helping animals find forever
+                homes where they're cherished and cared for.
               </p>
             </div>
           </li>
+
           <li className="flex items-center mb-2">
             <CheckCheck className="h-12 w-12 mr-2 text-blue-400" />
             <div>
-              <strong>Short Courses</strong>
+              <strong>Transparency</strong>
               <p className="text-sm">
-                Enhance your skills with our concise and focused short courses,
-                designed for quick and effective learning.
+                We operate with transparency, ensuring that every transaction
+                made on our platform is clear and accountable.
               </p>
             </div>
           </li>
+
           <li className="flex items-center mb-2">
             <CheckCheck className="h-12 w-12 mr-2 text-green-400" />
             <div>
-              <strong>Training from experts</strong>
+              <strong>Pet Products</strong>
               <p className="text-sm">
-                Immerse yourself in knowledge with industry experts guiding you
-                through each step.
+                We offer a curated selection of high-quality pet products, from
+                food and toys to accessories, to enhance the lives of pets and
+                their owners.
               </p>
             </div>
           </li>
+
           <li className="flex items-center mb-4">
             <CheckCheck className="h-12 w-12 text-yellow-400" />
             <div>
-              <strong>1.5k+ Video Courses</strong>
+              <strong>Impact</strong>
               <p className="text-sm">
-                Dive into a vast library of our video courses covering multiple
-                subjects, offering a visual learning experience.
+                Above all, we measure our success by the positive impact we have
+                on the lives of animals and the people who love them.
               </p>
             </div>
           </li>
